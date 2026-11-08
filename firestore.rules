@@ -1,0 +1,92 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() { return request.auth != null; }
+    function userRole() { return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role; }
+    function isAdmin() { return isSignedIn() && userRole() == 'admin'; }
+    function isTeacher() { return isSignedIn() && userRole() == 'teacher'; }
+
+    match /users/{uid} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && request.auth.uid == uid;
+      allow update: if isSignedIn() && (request.auth.uid == uid || isAdmin());
+      allow delete: if isAdmin();
+    }
+    
+    match /departments/{id} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /emergencyAlerts/{alertId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && request.resource.data.studentId == request.auth.uid;
+      allow update: if isSignedIn(); // Allow resolve
+    }
+
+    match /guardianLinks/{linkId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn();
+      allow delete: if isAdmin();
+    }
+
+    match /wallets/{uid} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && request.auth.uid == uid;
+      allow update: if isSignedIn();
+    }
+
+    match /transactions/{txnId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn();
+    }
+
+    match /canteenItems/{itemId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /orders/{orderId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && request.resource.data.uid == request.auth.uid;
+      allow update: if isSignedIn();
+    }
+
+    match /buses/{busId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /studyResources/{resId} {
+      allow read: if isSignedIn();
+      allow write: if isTeacher() || isAdmin();
+    }
+    
+    match /marketplaceListings/{id} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+    
+    match /academicCourses/{id} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+    
+    match /routines/{id} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /notices/{nid} { allow read: if isSignedIn(); allow write: if isTeacher() || isAdmin(); }
+    match /books/{bid} { allow read: if isSignedIn(); allow write: if isSignedIn(); }
+    match /libraryLoans/{lid} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+    match /attendanceSessions/{sid} { allow read: if isSignedIn(); allow write: if isTeacher() || isAdmin(); }
+    match /attendanceRecords/{rid} {
+      allow read: if isSignedIn();
+      allow write: if isSignedIn();
+    }
+  }
+}

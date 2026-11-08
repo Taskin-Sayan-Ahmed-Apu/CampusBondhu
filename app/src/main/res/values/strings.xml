@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CampusBondhu</string>
+    <string-array name="notice_categories">
+        <item>General</item>
+        <item>Exam</item>
+        <item>Class Cancellation</item>
+        <item>Event</item>
+    </string-array>
+    <string-array name="resource_types">
+        <item>Notes</item>
+        <item>Past Question</item>
+        <item>Syllabus</item>
+        <item>Other</item>
+    </string-array>
+    <string-array name="days">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+    </string-array>
+    <!-- ✅ নতুন ক্রেডিট লিস্ট -->
+    <string-array name="credit_hours">
+        <item>0.75</item>
+        <item>1.5</item>
+        <item>2.0</item>
+        <item>3.0</item>
+        <item>4.0</item>
+    </string-array>
+</resources>

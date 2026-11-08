@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.CampusBondhu" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/blue_accent</item>
+        <item name="colorPrimaryVariant">@color/navy_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/purple_accent</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:colorBackground">@color/navy_900</item>
+        <item name="colorSurface">@color/navy_800</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="android:statusBarColor">@color/navy_900</item>
+        <item name="android:navigationBarColor">@color/navy_900</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <!-- ✅ গর্জিয়াস অ্যানিমেশন গ্লোবালি অ্যাপ্লাই করা হলো -->
+        <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+    </style>
+
+    <!-- ✅ নতুন অ্যানিমেশন স্টাইল -->
+    <style name="CustomActivityAnimation" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/zoom_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/zoom_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/zoom_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/zoom_out</item>
+    </style>
+
+    <style name="Theme.CampusBondhu.Splash" parent="Theme.CampusBondhu">
+        <item name="android:windowBackground">@drawable/splash_gradient</item>
+    </style>
+
+    <style name="CampusButton" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">14dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="backgroundTint">@color/blue_accent</item>
+    </style>
+
+    <style name="CampusInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">14dp</item>
+        <item name="boxCornerRadiusTopEnd">14dp</item>
+        <item name="boxCornerRadiusBottomStart">14dp</item>
+        <item name="boxCornerRadiusBottomEnd">14dp</item>
+        <item name="boxStrokeColor">@color/blue_accent</item>
+        <item name="hintTextColor">@color/grey_500</item>
+    </style>
+</resources>

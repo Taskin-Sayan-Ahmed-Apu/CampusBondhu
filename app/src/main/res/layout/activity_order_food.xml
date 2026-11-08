@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/navy_900" android:gravity="center_horizontal"
+    android:orientation="vertical" android:padding="24dp">
+
+    <ImageButton android:id="@+id/btnBack" android:layout_width="44dp"
+        android:layout_height="44dp" android:layout_gravity="start"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_menu_revert" app:tint="@color/white" />
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" android:text="🍔" android:textSize="64sp" />
+
+    <TextView android:id="@+id/tvFoodName" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_marginTop="12dp"
+        android:text="Food Name" android:textColor="@color/white"
+        android:textSize="22sp" android:textStyle="bold" />
+
+    <TextView android:id="@+id/tvPrice" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_marginTop="4dp"
+        android:text="৳ 0.00" android:textColor="@color/grey_500" android:textSize="16sp" />
+
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="32dp" android:gravity="center_vertical" android:orientation="horizontal">
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnMinus"
+            android:layout_width="50dp" android:layout_height="50dp" android:text="-"
+            android:textSize="20sp" app:cornerRadius="25dp" app:backgroundTint="@color/navy_700" />
+        <TextView android:id="@+id/tvQty" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_marginHorizontal="24dp"
+            android:text="1" android:textColor="@color/white" android:textSize="24sp" android:textStyle="bold" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnPlus"
+            android:layout_width="50dp" android:layout_height="50dp" android:text="+"
+            android:textSize="20sp" app:cornerRadius="25dp" app:backgroundTint="@color/navy_700" />
+    </LinearLayout>
+
+    <TextView android:id="@+id/tvTotal" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_marginTop="32dp"
+        android:text="Total: ৳ 0.00" android:textColor="@color/teal_success"
+        android:textSize="20sp" android:textStyle="bold" />
+
+    <com.google.android.material.button.MaterialButton android:id="@+id/btnPay"
+        style="@style/CampusButton" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_marginTop="32dp"
+        android:text="Pay with Demo Wallet" app:backgroundTint="@color/purple_accent" />
+
+    <ProgressBar android:id="@+id/progressBar" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_marginTop="12dp" android:visibility="gone" />
+</LinearLayout>

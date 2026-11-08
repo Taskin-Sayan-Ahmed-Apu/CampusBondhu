@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "610012824275",
+    "project_id": "campusbondhu-c2b14",
+    "storage_bucket": "campusbondhu-c2b14.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610012824275:android:827471d7be7facd4f24a26",
+        "android_client_info": {
+          "package_name": "com.campusbondhu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0VIaOKqfB439R8dLWz3o5ySfWSs-eSm4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

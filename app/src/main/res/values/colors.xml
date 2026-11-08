@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="navy_900">#0A1128</color>
+    <color name="navy_800">#1C2541</color>
+    <color name="navy_700">#2B3A67</color>
+    <color name="blue_accent">#3A86FF</color>
+    <color name="purple_accent">#8338EC</color>
+    <color name="teal_success">#06D6A0</color>
+    <color name="orange_warning">#FF9F1C</color>
+    <color name="red_sos">#EF233C</color>
+    <color name="white">#FFFFFF</color>
+    <color name="off_white">#F8F9FA</color>
+    <color name="grey_100">#E9ECEF</color>
+    <color name="grey_500">#ADB5BD</color>
+    <color name="grey_800">#343A40</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+</resources>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- Glowing Background Effect -->
+    <path
+        android:fillColor="#33FFD700"
+        android:pathData="M54,54m-45,0a45,45 0,1 1,90 0a45,45 0,1 1,-90 0" />
+
+    <!-- Cap Top Diamond (Golden Yellow) -->
+    <path
+        android:fillColor="#FFD700"
+        android:strokeColor="#E65100"
+        android:strokeWidth="2.5"
+        android:pathData="M54,25 L20,40 L54,55 L88,40 Z" />
+        
+    <!-- Cap Base (Amber/Gold) -->
+    <path
+        android:fillColor="#FFC107"
+        android:strokeColor="#E65100"
+        android:strokeWidth="2.5"
+        android:pathData="M32,50 L32,65 Q54,75 76,65 L76,50 Z" />
+        
+    <!-- Tassel String (Dark Navy for contrast) -->
+    <path
+        android:strokeColor="#1C2541"
+        android:strokeWidth="3"
+        android:pathData="M54,35 L75,35 L75,65" />
+        
+    <!-- Tassel Body (Orange-Gold) -->
+    <path
+        android:fillColor="#FF9800"
+        android:strokeColor="#E65100"
+        android:strokeWidth="2"
+        android:pathData="M71,65 L79,65 L79,80 L71,80 Z" />
+    <path
+        android:fillColor="#FF9800"
+        android:pathData="M71,80 L79,80 L75,88 Z" />
+        
+    <!-- Center Button (White with dark border) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#1C2541"
+        android:strokeWidth="1.5"
+        android:pathData="M54,32 L58,36 L54,40 L50,36 Z" />
+</vector>

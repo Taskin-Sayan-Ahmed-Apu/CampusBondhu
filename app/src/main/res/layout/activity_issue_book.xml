@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/navy_900" android:gravity="center"
+    android:orientation="vertical" android:padding="24dp">
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="📚" android:textSize="64sp" />
+    
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginTop="16dp" android:text="Issue Book"
+        android:textColor="@color/white" android:textSize="20sp" android:textStyle="bold" />
+
+    <TextView android:id="@+id/tvBookTitle" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_marginTop="8dp"
+        android:gravity="center" android:text="Book Name"
+        android:textColor="@color/blue_accent" android:textSize="18sp" />
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="12dp" android:gravity="center"
+        android:text="Are you sure you want to issue this book?
+Due date will be 14 days from today."
+        android:textColor="@color/grey_500" android:textSize="13sp" />
+
+    <com.google.android.material.button.MaterialButton android:id="@+id/btnConfirm"
+        style="@style/CampusButton" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_marginTop="24dp"
+        android:text="Confirm Issue" app:backgroundTint="@color/teal_success" />
+
+    <com.google.android.material.button.MaterialButton android:id="@+id/btnCancel"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="8dp" android:text="Cancel"
+        android:textColor="@color/grey_500" />
+
+    <ProgressBar android:id="@+id/progressBar" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_marginTop="12dp"
+        android:visibility="gone" />
+</LinearLayout>

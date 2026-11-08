@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/navy_900" android:fillViewport="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="20dp">
+        <ImageButton android:id="@+id/btnBack" android:layout_width="44dp"
+            android:layout_height="44dp" android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Back" android:src="@android:drawable/ic_menu_revert"
+            app:tint="@color/white" />
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="Edit Profile"
+            android:textColor="@color/white" android:textSize="22sp" android:textStyle="bold" />
+
+        <!-- ✅ প্রোফাইল পিকচার পারফেক্ট সার্কেলে বসানোর লেআউট -->
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" android:layout_marginTop="20dp">
+            
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                app:cardCornerRadius="55dp"
+                app:strokeWidth="3dp"
+                app:strokeColor="@color/blue_accent"
+                app:cardBackgroundColor="@color/navy_700">
+                <ImageView android:id="@+id/ivProfilePic" 
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" 
+                    android:scaleType="centerCrop"
+                    android:src="@android:drawable/ic_menu_myplaces" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <ImageView android:id="@+id/btnAddPic" android:layout_width="36dp"
+                android:layout_height="36dp" android:layout_gravity="bottom|end"
+                android:background="@drawable/circle_bg" android:padding="6dp"
+                android:src="@android:drawable/ic_input_add" app:tint="@color/white" />
+        </FrameLayout>
+
+        <com.google.android.material.textfield.TextInputLayout style="@style/CampusInput"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" android:hint="Full Name">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/etName"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout style="@style/CampusInput"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:hint="Student ID">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/etStudentId"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout style="@style/CampusInput"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:hint="Department">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/etDepartment"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout style="@style/CampusInput"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:hint="Phone">
+            <com.google.android.material.textfield.TextInputEditText android:id="@+id/etPhone"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:inputType="phone" android:textColor="@color/white" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnSave"
+            style="@style/CampusButton" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="20dp"
+            android:text="Save Changes" />
+
+        <ProgressBar android:id="@+id/progressBar" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_gravity="center"
+            android:layout_marginTop="12dp" android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>
