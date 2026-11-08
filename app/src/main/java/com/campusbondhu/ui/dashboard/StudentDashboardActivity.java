@@ -212,6 +212,7 @@ public class StudentDashboardActivity extends AppCompatActivity {
     private void loadAndInitWallet() {}
 
     private void setupGrid() {
+        // ✅ ১২টা কার্ড (চ্যাট বাদ দেওয়া হলো)
         String[][] modules = {
             {"📷","Attendance","Scan QR"}, {"📢","Notices","Updates"},
             {"📚","Library","Books"}, {"💰","Wallet","Demo"},
@@ -254,7 +255,6 @@ public class StudentDashboardActivity extends AppCompatActivity {
         interface OnClick { void onClick(String title); }
         private final String[][] data; private final OnClick listener;
         ModuleAdapter(String[][] d, OnClick l) { data = d; listener = l; }
-
         @NonNull @Override
         public VH onCreateViewHolder(@NonNull ViewGroup p, int t) {
             return new VH(android.view.LayoutInflater.from(p.getContext())
@@ -266,7 +266,6 @@ public class StudentDashboardActivity extends AppCompatActivity {
             h.itemView.setOnClickListener(v -> listener.onClick(m[1]));
         }
         @Override public int getItemCount() { return data.length; }
-
         static class VH extends RecyclerView.ViewHolder {
             TextView tvIcon, tvTitle, tvSubtitle;
             VH(View v) {

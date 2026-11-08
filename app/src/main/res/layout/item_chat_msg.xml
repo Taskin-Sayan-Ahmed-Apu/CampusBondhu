@@ -4,5 +4,8 @@
     android:orientation="vertical" android:padding="4dp">
     <TextView android:id="@+id/tvChatMsg" android:layout_width="wrap_content"
         android:layout_height="wrap_content" android:padding="12dp"
-        android:maxWidth="300dp" android:textSize="14sp" />
+        android:maxWidth="300dp" android:textColor="@color/white" android:textSize="14sp" />
+    <TextView android:id="@+id/tvSeenStatus" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="Sent"
+        android:textColor="@color/grey_500" android:textSize="10sp" android:visibility="gone" />
 </LinearLayout>

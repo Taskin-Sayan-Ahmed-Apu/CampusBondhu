@@ -2,6 +2,7 @@ package com.campusbondhu.ui.bus;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -13,8 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.campusbondhu.data.model.Bus;
 import com.campusbondhu.data.repository.BusRepository;
 import com.campusbondhu.databinding.ActivityManageBusBinding;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ManageBusActivity extends AppCompatActivity {
     private ActivityManageBusBinding binding;
@@ -22,13 +27,15 @@ public class ManageBusActivity extends AppCompatActivity {
     private BusAdapter adapter;
     private BusRepository repo = new BusRepository();
 
-    // ✅ খুলনার রুট পয়েন্ট (সোনাডাঙ্গা, গল্লামারী, দৌলতপুর)
+    // ✅ ডাটাবেসের সঠিক লিংক
+    private final String RTDB_URL = "https://campusbondhu-c2b14-default-rtdb.asia-southeast1.firebasedatabase.app";
+
     private final double[][] khulnaRoute = {
-            {22.8098, 89.5403}, // Sonadanga
-            {22.8302, 89.5286}, // Gollamari
-            {22.8680, 89.5112}  // Daulatpur
+        {22.8098, 89.5403}, // Sonadanga
+        {22.8302, 89.5286}, // Gollamari
+        {22.8680, 89.5112}  // Daulatpur
     };
-    private int routeStep = 0; // বাস এখন কোন পয়েন্টে আছে
+    private int routeStep = 0;
 
     @Override
     protected void onCreate(Bundle s) {
@@ -61,8 +68,6 @@ public class ManageBusActivity extends AppCompatActivity {
             bus.setBusName(name);
             bus.setBusNumber(number);
             bus.setRouteName(route);
-
-            // ✅ নতুন বাস ডিফল্টভাবে সোনাডাঙ্গায় থাকবে
             bus.setLatitude(khulnaRoute[0][0]);
             bus.setLongitude(khulnaRoute[0][1]);
             bus.setLastUpdated(System.currentTimeMillis());
@@ -88,24 +93,34 @@ public class ManageBusActivity extends AppCompatActivity {
         @NonNull @Override
         public VH onCreateViewHolder(@NonNull ViewGroup p, int t) {
             return new VH(getLayoutInflater().inflate(
-                    com.campusbondhu.R.layout.item_manage_bus, p, false));
+                com.campusbondhu.R.layout.item_manage_bus, p, false));
         }
         @Override public void onBindViewHolder(@NonNull VH h, int pos) {
             Bus b = data.get(pos);
             h.tvName.setText(b.getBusName() + " (" + b.getBusNumber() + ")");
-
+            
             h.btnUpdate.setOnClickListener(v -> {
-                // ✅ প্রতি ক্লিকে বাস পরের স্টেশনে যাবে
                 routeStep = (routeStep + 1) % khulnaRoute.length;
                 double lat = khulnaRoute[routeStep][0];
                 double lng = khulnaRoute[routeStep][1];
+                
+                // ✅ সঠিক URL দিয়ে ডাটাবেসে পাঠানো হচ্ছে
+                DatabaseReference busRef = FirebaseDatabase.getInstance(RTDB_URL)
+                    .getReference("bus_locations").child(b.getBusId());
+                
+                Map<String, Object> locationMap = new HashMap<>();
+                locationMap.put("lat", lat);
+                locationMap.put("lng", lng);
+                locationMap.put("updated", System.currentTimeMillis());
 
-                repo.updateLocation(b.getBusId(), lat, lng).observe(ManageBusActivity.this, ok -> {
-                    if (Boolean.TRUE.equals(ok)) {
-                        String[] stationNames = {"Sonadanga", "Gollamari", "Daulatpur"};
-                        Toast.makeText(ManageBusActivity.this,
-                                "Bus moved to: " + stationNames[routeStep], Toast.LENGTH_SHORT).show();
-                    }
+                busRef.setValue(locationMap).addOnSuccessListener(aVoid -> {
+                    Log.d("RTDB_DEBUG", "Bus location pushed to RTDB");
+                    String[] stationNames = {"Sonadanga", "Gollamari", "Daulatpur"};
+                    Toast.makeText(ManageBusActivity.this, 
+                        "Bus moved to: " + stationNames[routeStep], Toast.LENGTH_SHORT).show();
+                }).addOnFailureListener(e -> {
+                    Log.e("RTDB_DEBUG", "Failed to push: " + e.getMessage());
+                    Toast.makeText(ManageBusActivity.this, "Error updating: " + e.getMessage(), Toast.LENGTH_LONG).show();
                 });
             });
         }
